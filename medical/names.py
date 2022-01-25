@@ -1,3 +1,5 @@
+# To obtain correct gender based on first name
+
 #%%
 import os
 # Source data from: https://www.ssa.gov/oact/babynames/limits.html :: National data
@@ -29,6 +31,8 @@ for i in names:
 #%%
 n_dict_a = sorted(n_dict)
 #%%
+# Data is sorted by smallest first so that the final value for any name and gender combination is the most common
+# seen in the data (so if uncertain then choose the most likely option but risk it is incorrect)
 import operator
 n_dict_a = sorted(n_dict.items(), key=operator.itemgetter(1))
 #%%
@@ -45,6 +49,7 @@ for i in n_dict_2.items():
 
 
 #%%
+# Export for import into the database for final export code
 import csv
 with open('names.csv', 'w', newline='') as f:
     writer = csv.writer(f)
